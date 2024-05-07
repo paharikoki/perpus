@@ -34,7 +34,9 @@ if (empty($_SESSION['user_id']) ) {
                             <th scope="col">Nama Peminjam</th>
                             <th scope="col">Nama Petugas</th>
                             <th scope="col">Tanggal Pinjam</th>
+                            <th scope="col">Tanggal Kembali</th>
                             <th scope="col">Jumlah Buku</th>
+                            <th scope="col">Telah Pengembalian</th>
                             <th scope="col">Denda</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -63,7 +65,12 @@ if (empty($_SESSION['user_id']) ) {
                 $rowPetugas = mysqli_fetch_assoc($resultPetugas);
                 echo "<td>" . $rowPetugas['nama'] . "</td>";
                 echo "<td>" . $row['tanggal_pinjam'] . "</td>";
+                echo "<td>" . $row['tanggal_kembali'] . "</td>";
                 echo "<td>" . $row['jumlah_pinjam'] . "</td>";
+                $currentDate = new DateTime();
+                $interval = $currentDate->diff(new DateTime($row['tanggal_kembali']));
+                $numberOfDays = $interval->days;
+                echo "<td>" . $numberOfDays . "</td>";
                 $denda = 0;
                 $tanggal_sekarang = date('Y-m-d');
                 $tanggal_kembali = $row['tanggal_kembali'];

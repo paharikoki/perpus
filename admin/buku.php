@@ -39,6 +39,7 @@ if (empty($_SESSION['user_id'])) {
             <thead>
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">ISBN</th>
                     <th scope="col">Judul</th>
                     <th scope="col">Pengarang</th>
                     <th scope="col">Penerbit</th>
@@ -63,6 +64,7 @@ if (empty($_SESSION['user_id'])) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<th scope='row'>" . $no . "</th>";
+                echo "<td>" . $row['isbn'] . "</td>";
                 echo "<td>" . $row['judul'] . "</td>";
                 echo "<td>" . $row['pengarang'] . "</td>";
                 echo "<td>" . $row['penerbit'] . "</td>";
