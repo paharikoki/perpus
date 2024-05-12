@@ -6,10 +6,11 @@ if (isset($_POST['submit'])) {
     $nohp = $_POST['nohp'];
     $email = $_POST['email'];
     $alamat = $_POST['alamat'];
+    $instansi = $_POST['instansi'];
     $password = $_POST['password'];
     $level_user = $_POST['level_user'];
 
-    $query = "INSERT INTO tb_anggota (nama, nim, nohp, email, alamat, password,level) VALUES ('$nama', '$nim', '$nohp', '$email', '$alamat', '$password', '$level_user')";
+    $query = "INSERT INTO tb_anggota (nama, nim, nohp, email, alamat, password,level,instansi) VALUES ('$nama', '$nim', '$nohp', '$email', '$alamat', '$password', '$level_user','$instansi')";
     $result = mysqli_query($koneksi, $query);
 
     if ($result) {
@@ -47,6 +48,11 @@ if (isset($_POST['submit'])) {
                 <div class="col-12">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="instansi" class="form-label">Instansi</label>
+                    <input type="text" class="form-control" name="instansi" id="instansi" placeholder="Universitas"
+                        required>
                 </div>
                 <div class="col-12">
                     <label for="alamat" class="form-label">Alamat</label>

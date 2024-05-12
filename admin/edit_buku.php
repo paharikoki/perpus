@@ -56,10 +56,8 @@ if (isset($_GET['id'])) {
                     <label for="inputState" class="form-label">Jenis Buku</label>
                     <select id="inputState" class="form-select" name="jenis_buku">
                         <option value="kosong" selected>Pilih Jenis Buku</option>
-                        <option value="pelajaran" <?php echo $jenis_buku == 'pelajaran' ? 'selected' : ''; ?>>Pelajaran
-                        </option>
                         <option value="fiksi" <?php echo $jenis_buku == 'fiksi' ? 'selected' : ''; ?>>Fiksi</option>
-                        <option value="romantis" <?php echo $jenis_buku == 'romantis' ? 'selected' : ''; ?>>Romantis
+                        <option value="nonfiksi" <?php echo $jenis_buku == 'nonfiksi' ? 'selected' : ''; ?>>Non Fiksi
                         </option>
                     </select>
                 </div>

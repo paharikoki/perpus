@@ -8,7 +8,7 @@
         $email = $_POST['email'];
         $alamat = $_POST['alamat'];
         $password = $_POST['password'];
-        $level = 1;
+        $level = 0;
     
         $sql = "INSERT INTO tb_anggota (nama, nim, nohp, email, alamat, password,level) VALUES ('$nama', '$nim', '$nohp', '$email', '$alamat', '$password','$level')";
         if (mysqli_query($koneksi, $sql)) {

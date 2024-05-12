@@ -4,7 +4,7 @@ if( !empty( $_SESSION['user_id'] ) ){
 <!-- Fixed navbar -->
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">Perpus BOS</a>
+        <a class="navbar-brand" href="./index.php">Taman Pustaka</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,7 +48,7 @@ if( !empty( $_SESSION['user_id'] ) ){
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="./index.php?hlm=kunjungan">Kunjungan</a>
                 </li>
             </ul>
             <div class="nav-item dropdown">
@@ -58,7 +58,6 @@ if( !empty( $_SESSION['user_id'] ) ){
                         Hai! <?php echo $_SESSION['user_name']; ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Ubah Password</a></li>
                         <li><a class="dropdown-item" href="../logout.php">Log Out</a></li>
                     </ul>
                 </div>

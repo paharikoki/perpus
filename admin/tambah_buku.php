@@ -77,9 +77,8 @@ if (isset($_REQUEST['submit'])) {
                     <label for="jenis_buku" class="form-label">Jenis Buku</label>
                     <select id="jenis_buku" class="form-select" name="jenis_buku">
                         <option value="kosong" selected>Pilih Jenis Buku</option>
-                        <option value="pelajaran">Pelajaran</option>
+                        <option value="nonfiksi">Non Fiksi</option>
                         <option value="fiksi">Fiksi</option>
-                        <option value="romantis">Romantis</option>
                     </select>
                 </div>
                 <div class="col-md-12 mt-4">

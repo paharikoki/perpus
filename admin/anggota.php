@@ -34,6 +34,13 @@ if(empty($_SESSION['user_id'])){
         </div>
     </div>
     <div class="mt-4">
+        <form method="post">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search..." name="keyword">
+                <button class="btn btn-outline-secondary" type="submit" name="search">Search</button>
+            </div>
+        </form>
+
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
@@ -51,12 +58,20 @@ if(empty($_SESSION['user_id'])){
                 <?php
         // Assuming you have established a database connection earlier and stored it in $koneksi variable
         // Fetch data from the tb_buku table
-        $sql = "SELECT * FROM tb_anggota";
+        if(isset($_POST['search'])){
+            $keyword = $_POST['keyword']; // Get the keyword entered by the user
+            $sql = "SELECT * FROM tb_anggota 
+                    WHERE nama LIKE '%$keyword%' OR nim LIKE '%$keyword%' OR email LIKE '%$keyword%' OR alamat LIKE '%$keyword%' OR nohp LIKE '%$keyword%'
+                    ORDER BY nama"; // SQL query to search for records based on keyword
+        } else {
+            $sql = "SELECT * FROM tb_anggota ORDER BY nama"; // Default SQL query to fetch all records
+        }
+        
         $result = mysqli_query($koneksi, $sql);
-
+        
         if (mysqli_num_rows($result) > 0) {
             $no = 1; // Initialize counter for row number
-
+        
             // Output data of each row
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
@@ -69,7 +84,7 @@ if(empty($_SESSION['user_id'])){
                 echo "<td>" . ($row['level'] == 1 ? "Admin" : "User") . "</td>";
                 echo "<td> <a href='./index.php?hlm=anggota&aksi=edit&id=" . $row['id'] . "' class='btn btn-warning'>Edit</a> <a href='#' onclick='confirmDelete(" . $row['id'] . ", \"" . $row['nama'] . "\")' class='btn btn-danger'>Hapus</a> </td>";
                 echo "</tr>";
-
+        
                 $no++; // Increment row number
             }
         } else {

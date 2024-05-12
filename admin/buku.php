@@ -35,6 +35,12 @@ if (empty($_SESSION['user_id'])) {
         </div>
     </div>
     <div class="mt-4">
+        <form method="post">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search..." name="keyword">
+                <button class="btn btn-outline-secondary" type="submit" name="search">Search</button>
+            </div>
+        </form>
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
@@ -52,35 +58,39 @@ if (empty($_SESSION['user_id'])) {
             </thead>
             <tbody>
                 <?php
-        // Assuming you have established a database connection earlier and stored it in $koneksi variable
-        // Fetch data from the tb_buku table
-        $sql = "SELECT * FROM tb_buku";
-        $result = mysqli_query($koneksi, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            $no = 1; // Initialize counter for row number
-
-            // Output data of each row
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<th scope='row'>" . $no . "</th>";
-                echo "<td>" . $row['isbn'] . "</td>";
-                echo "<td>" . $row['judul'] . "</td>";
-                echo "<td>" . $row['pengarang'] . "</td>";
-                echo "<td>" . $row['penerbit'] . "</td>";
-                echo "<td>" . $row['tahun_terbit'] . "</td>";
-                echo "<td>" . $row['genre'] . "</td>";
-                echo "<td>" . $row['jumlah_total'] . "</td>";
-                echo "<td>" . $row['jumlah_tersedia'] . "</td>";
-                echo "<td> <a href='./index.php?hlm=buku&aksi=edit&id=" . $row['id'] . "' class='btn btn-warning'>Edit</a> <a href='#' onclick='confirmDelete(" . $row['id'] . ", \"" . $row['judul'] . "\")' class='btn btn-danger'>Hapus</a> </td>";
-                echo "</tr>";
-
-                $no++; // Increment row number
+        
+        
+        if(isset($_POST['search'])){
+            $keyword = $_POST['keyword'];
+            $sql = "SELECT * FROM tb_buku 
+            WHERE isbn LIKE '%$keyword%' OR judul LIKE '%$keyword%' OR pengarang LIKE '%$keyword%' OR penerbit LIKE '%$keyword%' OR tahun_terbit LIKE '%$keyword%' OR genre LIKE '%$keyword%' OR jumlah_total LIKE '%$keyword%' OR jumlah_tersedia LIKE '%$keyword%' 
+            ORDER BY judul"; 
+            } else {
+                $sql = "SELECT * FROM tb_buku ORDER BY judul"; 
             }
-        } else {
-            echo "<tr><td colspan='9' class='text-center'>No records found</td></tr>";
-        }
-        ?>
+            $result = mysqli_query($koneksi, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $no = 1; 
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<th scope='row'>" . $no . "</th>";
+                    echo "<td>" . $row['isbn'] . "</td>";
+                    echo "<td>" . $row['judul'] . "</td>";
+                    echo "<td>" . $row['pengarang'] . "</td>";
+                    echo "<td>" . $row['penerbit'] . "</td>";
+                    echo "<td>" . $row['tahun_terbit'] . "</td>";
+                    echo "<td>" . $row['genre'] . "</td>";
+                    echo "<td>" . $row['jumlah_total'] . "</td>";
+                    echo "<td>" . $row['jumlah_tersedia'] . "</td>";
+                    echo "<td> <a href='./index.php?hlm=buku&aksi=edit&id=" . $row['id'] . "' class='btn btn-warning'>Edit</a> <a href='#' onclick='confirmDelete(" . $row['id'] . ", \"" . $row['judul'] . "\")' class='btn btn-danger'>Hapus</a> </td>";
+                    echo "</tr>";
+
+                    $no++; 
+                }
+            } else {
+                echo "<tr><td colspan='10' class='text-center'>No records found</td></tr>";
+            }
+            ?>
             </tbody>
         </table>
     </div>

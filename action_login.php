@@ -24,6 +24,12 @@ if (isset($_POST['submit'])) {
             echo "<br/><a>Success Login. Please wait</a>";
             echo "<script>setTimeout(function(){ window.location.href = './admin/'; }, 2000);</script>";
         }else{
+            //store data to visit table
+            $sql = "INSERT INTO tb_kunjungan (id_anggota, waktu) VALUES ('".$_SESSION['user_id']."', NOW())";
+            $result = mysqli_query($koneksi, $sql);
+            if (!$result) {
+                echo "<script>alert('Gagal menyimpan data kunjungan')</script>";
+            }
             echo "<script>alert('Login berhasil')</script>";
             echo "<br/><a>Success Login. Please wait</a>";
             echo "<script>setTimeout(function(){ window.location.href = './home.php'; }, 2000);</script>";
