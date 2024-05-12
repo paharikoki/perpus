@@ -87,7 +87,7 @@ if (isset($_GET['id'])) {
                 echo "<script>location='index.php?hlm=anggota'</script>";
             } else {
                 echo "<script>alert('Data gagal diubah')</script>";
-                echo "<script>location='index.php?hlm=edit_anggota&id=$id'</script>";
+                echo "<script>location='index.php?hlm=edit'</script>";
             }
         }
     }

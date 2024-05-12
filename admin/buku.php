@@ -64,9 +64,9 @@ if (empty($_SESSION['user_id'])) {
             $keyword = $_POST['keyword'];
             $sql = "SELECT * FROM tb_buku 
             WHERE isbn LIKE '%$keyword%' OR judul LIKE '%$keyword%' OR pengarang LIKE '%$keyword%' OR penerbit LIKE '%$keyword%' OR tahun_terbit LIKE '%$keyword%' OR genre LIKE '%$keyword%' OR jumlah_total LIKE '%$keyword%' OR jumlah_tersedia LIKE '%$keyword%' 
-            ORDER BY judul"; 
+            ORDER BY id DESC"; 
             } else {
-                $sql = "SELECT * FROM tb_buku ORDER BY judul"; 
+                $sql = "SELECT * FROM tb_buku ORDER BY id DESC"; 
             }
             $result = mysqli_query($koneksi, $sql);
             if (mysqli_num_rows($result) > 0) {

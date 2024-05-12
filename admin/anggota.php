@@ -62,9 +62,9 @@ if(empty($_SESSION['user_id'])){
             $keyword = $_POST['keyword']; // Get the keyword entered by the user
             $sql = "SELECT * FROM tb_anggota 
                     WHERE nama LIKE '%$keyword%' OR nim LIKE '%$keyword%' OR email LIKE '%$keyword%' OR alamat LIKE '%$keyword%' OR nohp LIKE '%$keyword%'
-                    ORDER BY nama"; // SQL query to search for records based on keyword
+                    ORDER BY id DESC"; // SQL query to search for records based on keyword
         } else {
-            $sql = "SELECT * FROM tb_anggota ORDER BY nama"; // Default SQL query to fetch all records
+            $sql = "SELECT * FROM tb_anggota ORDER BY id DESC"; // Default SQL query to fetch all records
         }
         
         $result = mysqli_query($koneksi, $sql);

@@ -24,7 +24,7 @@ if (empty($_SESSION['user_id']) ) {
 <div class="container">
     <div class="d-flex col gap-3 mt-2">
         <div class="col-md-6 w-100">
-            <h2 class="text-start">Pengembalian Buku</h2>
+            <h2 class="text-start">Daftar Peminjaman Buku</h2>
             <div class="mt-4">
                 <form method="post">
                     <div class="input-group mb-3">

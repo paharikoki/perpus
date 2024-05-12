@@ -15,10 +15,10 @@ if (isset($_POST['submit'])) {
 
     if ($result) {
         echo "<script>alert('Data berhasil ditambahkan')</script>";
-        echo "<script>location='index.php?page=anggota'</script>";
+        echo "<script>location='index.php?hlm=anggota'</script>";
     } else {
         echo "<script>alert('Data gagal ditambahkan')</script>";
-        echo "<script>location='index.php?page=tambah_anggota'</script>";
+        echo "<script>location='index.php?hlm=anggota'</script>";
     }
 }
 ?>
